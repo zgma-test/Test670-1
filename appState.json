@@ -1,0 +1,141 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "3d1aeb8f-3311-4896-a6dc-46902f900926": {
+        "id": "3d1aeb8f-3311-4896-a6dc-46902f900926",
+        "parent": null,
+        "name": "Test670-1",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "2fb034b1-bf7e-4a63-8dee-2e7cf0ec4d75"
+        ],
+        "isRemovable": false,
+        "filePath": "Test670-1"
+      },
+      "2fb034b1-bf7e-4a63-8dee-2e7cf0ec4d75": {
+        "id": "2fb034b1-bf7e-4a63-8dee-2e7cf0ec4d75",
+        "parent": "3d1aeb8f-3311-4896-a6dc-46902f900926",
+        "name": "lambda.js",
+        "type": "JS_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "Test670-1/lambda.js",
+        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n\n    s3.listObjects({\n        'Bucket': 'hiru.test123',\n        'MaxKeys': 10,\n        'Prefix': ''\n    }).promise()\n        .then(data => {\n            console.log(data);           // successful response\n            /*\n            data = {\n                Contents: [\n                    {\n                       ETag: \"\\\"70ee1738b6b21e2c8a43f3a5ab0eee71\\\"\",\n                       Key: \"example1.jpg\",\n                       LastModified: \"<Date Representation>\",\n                       Owner: {\n                          DisplayName: \"myname\",\n                          ID: \"12345example25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc\"\n                       },\n                       Size: 11,\n                       StorageClass: \"STANDARD\"\n                    },\n                    // {...}\n                ]\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n}",
+        "config": {
+          "runtime": "nodejs8.10",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        },
+        "triggers": [
+          {
+            "resourceName": "apigusEast1sachithraAPInameinduget",
+            "config": {}
+          }
+        ],
+        "testCases": {
+          "9bfcdc24-b7ef-4139-a65f-e309b0282a87": {
+            "id": "9bfcdc24-b7ef-4139-a65f-e309b0282a87",
+            "name": "Test event",
+            "functionId": "2fb034b1-bf7e-4a63-8dee-2e7cf0ec4d75",
+            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}",
+            "eventTemplate": "hello-world"
+          }
+        }
+      }
+    },
+    "deletedFiles": [],
+    "rootNode": "3d1aeb8f-3311-4896-a6dc-46902f900926",
+    "openFiles": [
+      "2fb034b1-bf7e-4a63-8dee-2e7cf0ec4d75"
+    ],
+    "currentFileId": "2fb034b1-bf7e-4a63-8dee-2e7cf0ec4d75",
+    "resources": {
+      "apigusEast1sachithraAPInameinduget": {
+        "name": "apigusEast1sachithraAPInameinduget",
+        "type": "API_GATEWAY",
+        "config": {
+          "selectedRegion": "us-east-1",
+          "apiMode": 1,
+          "apiName": "sachithraAPIname",
+          "apiId": "052p9kjn18",
+          "endpointType": "REGIONAL",
+          "rootResourceId": "zrjp6rdv3b",
+          "existingResources": {
+            "/qa/indu": "autzvm",
+            "/qa": "psbn2f",
+            "/sigma608": "ysd16b",
+            "/": "zrjp6rdv3b"
+          },
+          "resourceMode": 1,
+          "resourcePath": "/qa/indu",
+          "resourceName": "indu",
+          "resourceId": "autzvm",
+          "restMethod": "GET",
+          "proxyIntegration": false,
+          "enableCORS": false,
+          "stageMode": 1,
+          "stageName": "Test",
+          "stageDeploymentId": "89ef7q",
+          "mode": 1
+        }
+      },
+      "s3hirutest123": {
+        "name": "s3hirutest123",
+        "type": "S3",
+        "config": {
+          "mode": 1,
+          "bucket": {
+            "region": "us-east-1",
+            "name": "hiru.test123"
+          }
+        }
+      }
+    },
+    "customTemplate": {
+      "dialect": null,
+      "definitions": {}
+    },
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {
+        "aws-sdk": {
+          "name": "aws-sdk",
+          "language": "javascript",
+          "version": "2.176.0",
+          "dev": true,
+          "notRemovable": false
+        }
+      }
+    }
+  },
+  "PROJECT_META": {
+    "projectName": "Test670-1",
+    "projectDescription": "",
+    "projectVersion": "1.0.0",
+    "projectRegion": "us-east-1",
+    "platform": "AWS",
+    "platformRegions": {},
+    "lastSave": 1564641195724
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "Test670-1",
+      "branches": [],
+      "url": "https://github.com/zgma-test/Test670-1"
+    }
+  }
+}
